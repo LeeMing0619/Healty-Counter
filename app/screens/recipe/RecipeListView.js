@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {Text, View, Image, TouchableOpacity, FlatList} from 'react-native';
 import {Colors, Helper, Constant} from '../../styles';
@@ -17,7 +18,7 @@ const RecipeListView = ({navigation, route}) => {
       headerBackTitleStyle: baseStyle.baseHeaderTitle,
       headerTintColor: Colors.WHITE,
     });
-  }, [navigation]);
+  }, [navigation, route]);
 
   const onRecipeClick = (position) => {
     navigation.navigate(Constant.RECIPE_DETAIL, {

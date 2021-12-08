@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {Platform} from 'react-native';
 
 export const RECIPE_CELL_HEIGHT = 140,

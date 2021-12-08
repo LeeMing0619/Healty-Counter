@@ -1,6 +1,19 @@
-import IMG_1 from '../assets/images/recipe1.jpg';
-import IMG_2 from '../assets/images/recipe3.jpg';
-import IMG_3 from '../assets/images/recipe2.jpg';
+/* eslint-disable prettier/prettier */
+import IMG_1 from '../assets/images/light-1.png';
+import IMG_2 from '../assets/images/light-2.png';
+import IMG_3 from '../assets/images/light-3.png';
+import IMG_4 from '../assets/images/light-4.png';
+import IMG_5 from '../assets/images/light-5.png';
+import IMG_6 from '../assets/images/light-6.png';
+import IMG_7 from '../assets/images/light-7.png';
+import IMG_8 from '../assets/images/light-8.png';
+
+import Setting_IMG_1 from '../assets/images/setting-1.png';
+import Setting_IMG_2 from '../assets/images/setting-2.png';
+import Setting_IMG_3 from '../assets/images/setting-3.png';
+import Setting_IMG_4 from '../assets/images/setting-4.png';
+import Setting_IMG_5 from '../assets/images/setting-5.png';
+
 
 import LIST_IMG_1 from '../assets/images/recipelist1.jpg';
 import LIST_IMG_2 from '../assets/images/recipelist2.jpg';
@@ -13,7 +26,7 @@ import REST_3 from '../assets/images/restaurant3.jpg';
 import REST_4 from '../assets/images/restaurant4.jpg';
 import REST_5 from '../assets/images/restaurant5.jpg';
 
-export const HomeRecipes = [
+export const LightList = [
   {
     title: 'START YOUR DAY RIGHT',
     subtitle: 'Breakfast',
@@ -28,6 +41,59 @@ export const HomeRecipes = [
     title: 'STAY FIT, EAT HEALTHY',
     subtitle: 'Breakfast',
     image: IMG_3,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: IMG_4,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: IMG_5,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: IMG_6,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: IMG_7,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: IMG_8,
+  },
+];
+
+export const SettingList = [
+  {
+    title: 'START YOUR DAY RIGHT',
+    subtitle: 'Breakfast',
+    image: Setting_IMG_1,
+  },
+  {
+    title: 'POWER VEGETABLES',
+    subtitle: 'Vegetarian',
+    image: Setting_IMG_2,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: Setting_IMG_3,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: Setting_IMG_4,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    subtitle: 'Breakfast',
+    image: Setting_IMG_5,
   },
 ];
 

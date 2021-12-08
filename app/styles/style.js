@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet, Platform} from 'react-native';
 import {Colors, Constant, Dimension} from '.';
 import {HEADER_HEIGHT} from './dimen';

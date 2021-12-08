@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {Text, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -20,7 +21,7 @@ const RecipeStack = () => {
       />
       <RecipeStack.Screen
         name={Constant.RECIPE_DETAIL}
-        component={RecipeDetailView} 
+        component={RecipeDetailView}
       />
     </RecipeStack.Navigator>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
   Text,
@@ -36,10 +37,10 @@ export default RecipeItemView;
 const viewStyle = StyleSheet.create({
   containerView: {
     height: Dimensions.get('window').height / 3,
-    marginLeft: '4%',
-    marginRight: '4%',
+    margin: 5,
     marginTop: '2%',
     marginBottom: '2%',
+    backgroundColor: 'red',
   },
   headerView: {
     padding: '4%',
@@ -52,7 +53,7 @@ const viewStyle = StyleSheet.create({
   },
   imageStyle: {
     height: Dimensions.get('window').height / 3,
-    width: Dimensions.get('window').width - 30,
+    width: Dimensions.get('window').width / 2 - 30,
     resizeMode: 'cover',
     borderRadius: 20,
   },

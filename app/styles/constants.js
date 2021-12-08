@@ -1,4 +1,10 @@
+/* eslint-disable prettier/prettier */
 export const RECIPE = 'Recipes',
+  THUMB = 'Thumb',
+  CALANDAR = 'Calandar',
+  CAMERA = 'Camera',
+  HIGHLIGHT = 'HighLight',
+  SETTING = 'Setting',
   RESTAURANT = 'Restaurants',
   RECIPE_LIST = 'RecipeList',
   RECIPE_DETAIL = 'RecipeDetail',
