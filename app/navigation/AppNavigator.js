@@ -1,25 +1,54 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
+import React, { useEffect }from 'react';
+import { Image, StyleSheet} from 'react-native';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Constant, Colors} from '../styles';
 import RecipeStack from './RecipeStack';
-import RestaurantStack from './RestaurantStack';
+
 import ThumbIcon from '../assets/images/icons-thumb.png';
 import CalandarIcon from '../assets/images/icons-calandar.png';
 import CameraIcon from '../assets/images/icons-camera.png';
 import LightIcon from '../assets/images/icons-light.png';
 import SettingIcon from '../assets/images/icons-setting.png';
-import RestaurantIcon from '../assets/images/icons-restaurant.png';
+
 import ThumbStack from './ThumbStack';
 import LightStack from './LightStack';
 import SettingStack from './SettingStack';
+import CalandarStack from './CalandarStack';
+import { openDatabase } from 'react-native-sqlite-storage';
 
 const HomeTabStack = createBottomTabNavigator();
 
-const AppNavigator = () => (
+var db = openDatabase({ name: 'HealthyCounter.db'});
+
+const AppNavigator = () => {
+  useEffect(() => {
+    db.transaction(function (txn) {
+      txn.executeSql(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='table_user'",
+        [],
+        function (tx, res) {
+          console.log('item:', res.rows.length);
+          if (res.rows.length == 0) {
+            txn.executeSql('DROP TABLE IF EXISTS table_user', []);
+            txn.executeSql('DROP TABLE IF EXISTS table_calandar', []);
+            txn.executeSql(
+              'CREATE TABLE IF NOT EXISTS table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, healthyCounter INT(10))',
+              []
+            );
+            txn.executeSql(
+              'CREATE TABLE IF NOT EXISTS table_calandar(id INTEGER PRIMARY KEY AUTOINCREMENT, resetDate VARCHAR(255), followCounter INT(10), unFollowCounter INT(10))',
+              []
+            );
+          }
+        }
+      );
+    });
+  }, []);
+
+  return (
   <NavigationContainer>
     <HomeTabStack.Navigator
       screenOptions={({route}) => ({
@@ -107,7 +136,7 @@ const AppNavigator = () => (
         showLabel: false,
       }}>
       <HomeTabStack.Screen name={Constant.THUMB} component={ThumbStack} />
-      <HomeTabStack.Screen name={Constant.CALANDAR}  component={RecipeStack}/>
+      <HomeTabStack.Screen name={Constant.CALANDAR}  component={CalandarStack}/>
       <HomeTabStack.Screen name={Constant.CAMERA}  component={RecipeStack}/>
       <HomeTabStack.Screen name={Constant.HIGHLIGHT}  component={LightStack}/>
       <HomeTabStack.Screen name={Constant.SETTING}  component={SettingStack}/>
@@ -117,7 +146,8 @@ const AppNavigator = () => (
       /> */}
     </HomeTabStack.Navigator>
   </NavigationContainer>
-);
+  );
+};
 
 export default AppNavigator;
 
