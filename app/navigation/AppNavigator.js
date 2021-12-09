@@ -5,7 +5,6 @@ import { Image, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Constant, Colors} from '../styles';
-import RecipeStack from './RecipeStack';
 
 import ThumbIcon from '../assets/images/icons-thumb.png';
 import CalandarIcon from '../assets/images/icons-calandar.png';

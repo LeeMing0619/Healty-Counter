@@ -8,18 +8,21 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import FoodTextView from '../../components/FoodTextView';
 import { Colors } from '../../styles';
+import * as Animatable from 'react-native-animatable';
 
-const LightItemView = ({params, onClick, onLongPress}) => (
-  <TouchableOpacity onPress={onClick} onLongPress={onLongPress}>
-    <View style={viewStyle.containerView}>
-      <ImageBackground source={params.image} resizeMode="contain" style={viewStyle.imageStyle}>
-          <Text style={viewStyle.textStyle}>{params && params.title}</Text>
-      </ImageBackground>
-    </View>
-  </TouchableOpacity>
-);
+const LightItemView = ({params, onClick, onLongPress}) => {
+
+  return (
+    <TouchableOpacity onPress={onClick} onLongPress={onLongPress}>
+      <Animatable.View animation={params.index % 2 === 0 ? 'slideInLeft':'slideInRight'} duration={1000} delay={100} style={viewStyle.containerView}>
+        <ImageBackground source={params.image} resizeMode="contain" style={viewStyle.imageStyle}>
+            <Animatable.Text animation="rubberBand" iterationCount="infinite" duration={3000} style={viewStyle.textStyle}>{params && params.title}</Animatable.Text>
+        </ImageBackground>
+      </Animatable.View>
+    </TouchableOpacity>
+  );
+};
 
 export default LightItemView;
 

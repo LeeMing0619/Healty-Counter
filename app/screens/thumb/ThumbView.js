@@ -16,6 +16,7 @@ import UnFollowIcon from '../../assets/images/unfollow.png';
 import BackgroundImage from '../../assets/images/bgThumb.png';
 import { openDatabase } from 'react-native-sqlite-storage';
 import moment from 'moment';
+import * as Animatable from 'react-native-animatable';
 
 var db = openDatabase({ name: 'HealthyCounter.db'});
 
@@ -213,19 +214,22 @@ const ThumbView = ({navigation}) => {
     <View style={viewStyle.containerView}>
         <ImageBackground source={BackgroundImage} resizeMode="cover" style={viewStyle.containerView}>
             <View style={viewStyle.headerView}>
-                <Text style={viewStyle.textTitleStyle}>Healthy Counter</Text>
+              <Animatable.Text animation="bounceInDown" duration={5000} style={viewStyle.textTitleStyle} >Healty Counter</Animatable.Text>
                 <TouchableOpacity onPress={() => _onPressCounter()}>
                   <ImageBackground source={HealthyIcon} resizeMode="contain" style={viewStyle.imageStyleHealthy}>
-                      <Text style={viewStyle.textTitleStyle1}>{num_counter}</Text>
+                    <Animatable.Text animation="swing" duration={5000} iterationCount="infinite" style={viewStyle.textTitleStyle1}>{num_counter}</Animatable.Text>
                   </ImageBackground>
                 </TouchableOpacity>
             </View>
             <View style={viewStyle.headerView2}>
               <TouchableOpacity onPress={() => _onPressFollow()}>
-                <Image source={FollowIcon} style={viewStyle.imageStyle} />
+                <Animatable.Image animation="tada" duration={2000}  easing="ease-out" iterationCount="infinite" source={FollowIcon} style={viewStyle.imageStyle}>
+                  {/* <Image source={FollowIcon} style={viewStyle.imageStyle} /> */}
+                </Animatable.Image>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => _onPressUnFollow()}>
-                <Image source={UnFollowIcon} style={viewStyle.imageStyle1} />
+                <Animatable.Image animation="rubberBand" duration={5000} iterationCount="infinite" source={UnFollowIcon} style={viewStyle.imageStyle1}>
+                </Animatable.Image>
               </TouchableOpacity>
             </View>
         </ImageBackground>
