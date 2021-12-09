@@ -28,42 +28,42 @@ import REST_5 from '../assets/images/restaurant5.jpg';
 
 export const LightList = [
   {
-    title: 'START YOUR DAY RIGHT',
+    title: '豆、豆腐',
     subtitle: 'Breakfast',
     image: IMG_1,
   },
   {
-    title: 'POWER VEGETABLES',
+    title: 'ごま、ナッツ',
     subtitle: 'Vegetarian',
     image: IMG_2,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: 'わかめ(海藻)',
     subtitle: 'Breakfast',
     image: IMG_3,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: '野菜',
     subtitle: 'Breakfast',
     image: IMG_4,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: '魚',
     subtitle: 'Breakfast',
     image: IMG_5,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: '椎茸(きのこ)',
     subtitle: 'Breakfast',
     image: IMG_6,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: '芋、こんにゃく',
     subtitle: 'Breakfast',
     image: IMG_7,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: '穀物',
     subtitle: 'Breakfast',
     image: IMG_8,
   },

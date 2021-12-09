@@ -18,6 +18,7 @@ import LightStack from './LightStack';
 import SettingStack from './SettingStack';
 import CalandarStack from './CalandarStack';
 import { openDatabase } from 'react-native-sqlite-storage';
+import CameraStack from './CameraStack';
 
 const HomeTabStack = createBottomTabNavigator();
 
@@ -137,7 +138,7 @@ const AppNavigator = () => {
       }}>
       <HomeTabStack.Screen name={Constant.THUMB} component={ThumbStack} />
       <HomeTabStack.Screen name={Constant.CALANDAR}  component={CalandarStack}/>
-      <HomeTabStack.Screen name={Constant.CAMERA}  component={RecipeStack}/>
+      <HomeTabStack.Screen name={Constant.CAMERA}  component={CameraStack}/>
       <HomeTabStack.Screen name={Constant.HIGHLIGHT}  component={LightStack}/>
       <HomeTabStack.Screen name={Constant.SETTING}  component={SettingStack}/>
       {/* <HomeTabStack.Screen

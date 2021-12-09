@@ -56,6 +56,7 @@ const ThumbView = ({navigation}) => {
       alert("ランダムメッセージ");
     }
     if (num_counter > 44) {
+      alert('※リセットのアラート');
       initCounter();
       setNumCounter(0);
     } else {
@@ -77,6 +78,30 @@ const ThumbView = ({navigation}) => {
               tx.executeSql(
                 'UPDATE table_user set healthyCounter=? where user_id=1',
                 [num_counter + 1],
+                (tx, results) => {
+                  //alert(""+ results.rowsAffected)
+                }
+              );
+            }
+          }
+        );
+        tx.executeSql(
+          "SELECT * FROM table_calandar WHERE resetDate=?",
+          [getCurrentDate()],
+          function (tx, res) {
+            // console.log(res.rows.item(0));
+            if (res.rows.length === 0) {
+              tx.executeSql(
+                'insert into table_calandar (resetDate, followCounter, unFollowCounter) VALUES(?,?,?)',
+                [getCurrentDate(), 1, 0],
+                (tx, results) => {
+                  //alert(""+ results.rowsAffected)
+                }
+              );
+            } else {
+              tx.executeSql(
+                'UPDATE table_calandar set followCounter=followCounter+1 WHERE resetDate=?',
+                [getCurrentDate()],
                 (tx, results) => {
                   //alert(""+ results.rowsAffected)
                 }
@@ -118,7 +143,31 @@ const ThumbView = ({navigation}) => {
             );
           }
         }
-      )
+      );
+      tx.executeSql(
+        "SELECT * FROM table_calandar WHERE resetDate=?",
+        [getCurrentDate()],
+        function (tx, res) {
+          // console.log(res.rows.item(0));
+          if (res.rows.length === 0) {
+            tx.executeSql(
+              'insert into table_calandar (resetDate, followCounter, unFollowCounter) VALUES(?,?,?)',
+              [getCurrentDate(), 0, 1],
+              (tx, results) => {
+                //alert(""+ results.rowsAffected)
+              }
+            );
+          } else {
+            tx.executeSql(
+              'UPDATE table_calandar set unFollowCounter=unFollowCounter+1 WHERE resetDate=?',
+              [getCurrentDate()],
+              (tx, results) => {
+                //alert(""+ results.rowsAffected)
+              }
+            );
+          }
+        }
+      );
     });
   };
 

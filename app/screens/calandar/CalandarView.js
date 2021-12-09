@@ -10,13 +10,16 @@ import {
 import BackgroundImage from '../../assets/images/bgThumb.png';
 import { CalendarList } from 'react-native-calendars';
 import { openDatabase } from 'react-native-sqlite-storage';
+import moment from 'moment';
 
 var db = openDatabase({ name: 'HealthyCounter.db'});
 
 const CalandarView = ({navigation}) => {
     const [markedDatesList, setMarkedDateList] = useState({});
+    const [currentDate, setCurrentDate] = useState('');
 
     useEffect(() => {
+        getCurrentDate();
         db.transaction((tx) => {
           tx.executeSql(
             'SELECT * FROM table_calandar',
@@ -33,16 +36,40 @@ const CalandarView = ({navigation}) => {
       }, [navigation]);
 
     const marked = {};
-    markedDatesList.forEach((day) => {
-        marked[day] = {startingDay: true, endingDay: true, color: '#50cebb', textColor: 'white'};
-    });
+    marked[currentDate] =  {startingDay: true, endingDay: true, color: '#ce8b50', textColor: 'white'};
 
+    if (markedDatesList.length > 0)
+        markedDatesList.forEach((day) => {
+            marked[day] = {startingDay: true, endingDay: true, color: '#50cebb', textColor: 'white'};
+        });
+
+    const _onPressDay = (day) => {
+        let selectedDate = day.dateString;
+        db.transaction((tx) => {
+            tx.executeSql(
+              'SELECT * FROM table_calandar WHERE resetDate=?',
+              [selectedDate],
+              (tx, results) => {
+                  _onShowAlert(selectedDate, results.rows.item(0).followCounter, results.rows.item(0).unFollowCounter);
+              }
+            );
+          });
+    };
+
+    const _onShowAlert = (selectedDate, followCounter, unFollowCounter) => {
+        alert("Date: " + selectedDate + "\n\nヘルシーボタンのタップ数: " + followCounter + "\n\nOMGボタンのタップ数: " + unFollowCounter)
+    };
+
+    const getCurrentDate = () => {
+        var date = moment().format("YYYY-MM-DD");
+        setCurrentDate(date);
+    };
     return (
         <View style={viewStyle.containerView}>
             <ImageBackground source={BackgroundImage} resizeMode="cover" style={viewStyle.containerView}>
                 <CalendarList
                     onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
-                    onDayPress={(day) => {console.log('selected day', day)}}
+                    onDayPress={(day) => { _onPressDay(day)}}
                     // Handler which gets executed on day long press. Default = undefined
                     onDayLongPress={(day) => {console.log('selected day', day)}}
                     pastScrollRange={50}
