@@ -19,41 +19,49 @@ export const LightList = [
     title: '豆、豆腐',
     index: 1,
     image: IMG_1,
+    value: 0,
   },
   {
     title: 'ごま、ナッツ',
     index: 2,
     image: IMG_2,
+    value: 0,
   },
   {
     title: 'わかめ(海藻)',
     index: 3,
     image: IMG_3,
+    value: 0,
   },
   {
     title: '野菜',
     index: 4,
     image: IMG_4,
+    value: 0,
   },
   {
     title: '魚',
     index: 5,
     image: IMG_5,
+    value: 0,
   },
   {
     title: '椎茸(きのこ)',
     index: 6,
     image: IMG_6,
+    value: 0,
   },
   {
     title: '芋、こんにゃく',
     index: 7,
     image: IMG_7,
+    value: 0,
   },
   {
     title: '穀物',
     index: 8,
     image: IMG_8,
+    value: 0,
   },
 ];
 

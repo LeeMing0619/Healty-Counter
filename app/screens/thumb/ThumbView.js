@@ -228,7 +228,7 @@ const ThumbView = ({navigation}) => {
                 </Animatable.Image>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => _onPressUnFollow()}>
-                <Animatable.Image animation="rubberBand" duration={5000} iterationCount="infinite" source={UnFollowIcon} style={viewStyle.imageStyle1}>
+                <Animatable.Image source={UnFollowIcon} style={viewStyle.imageStyle1}>
                 </Animatable.Image>
               </TouchableOpacity>
             </View>

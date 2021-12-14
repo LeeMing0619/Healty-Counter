@@ -17,7 +17,7 @@ const LightItemView = ({params, onClick, onLongPress}) => {
     <TouchableOpacity onPress={onClick} onLongPress={onLongPress}>
       <Animatable.View animation={params.index % 2 === 0 ? 'slideInLeft':'slideInRight'} duration={1000} delay={100} style={viewStyle.containerView}>
         <ImageBackground source={params.image} resizeMode="contain" style={viewStyle.imageStyle}>
-            <Animatable.Text animation="rubberBand" iterationCount="infinite" duration={3000} style={viewStyle.textStyle}>{params && params.title}</Animatable.Text>
+            <Animatable.Text animation="rubberBand" iterationCount="infinite" duration={3000} style={viewStyle.textStyle}>{params && params.value}</Animatable.Text>
         </ImageBackground>
       </Animatable.View>
     </TouchableOpacity>
@@ -44,7 +44,7 @@ const viewStyle = StyleSheet.create({
     alignItems: 'center',
   },
   textStyle: {
-    fontSize: 12,
+    fontSize: 22,
     letterSpacing: -0.24,
     fontWeight: 'normal',
     color: Colors.BLACK,
