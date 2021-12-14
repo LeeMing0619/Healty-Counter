@@ -31,17 +31,13 @@ const AppNavigator = () => {
         [],
         function (tx, res) {
           console.log('item:', res.rows.length);
-          if (res.rows.length == 0) {
+          if (res.rows.length === 0) {
             txn.executeSql('DROP TABLE IF EXISTS table_user', []);
             txn.executeSql('DROP TABLE IF EXISTS table_calandar', []);
-            txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, healthyCounter INT(10))',
-              []
-            );
-            txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS table_calandar(id INTEGER PRIMARY KEY AUTOINCREMENT, resetDate VARCHAR(255), followCounter INT(10), unFollowCounter INT(10))',
-              []
-            );
+            txn.executeSql('DROP TABLE IF EXISTS table_meal', []);
+            txn.executeSql('CREATE TABLE IF NOT EXISTS table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, healthyCounter INT(10) NOT NULL default 0)', []);
+            txn.executeSql('CREATE TABLE IF NOT EXISTS table_calandar(id INTEGER PRIMARY KEY AUTOINCREMENT, resetDate VARCHAR(255), followCounter INT(10) NOT NULL default 0, unFollowCounter INT(10) NOT NULL default 0)', []);
+            txn.executeSql('CREATE TABLE IF NOT EXISTS table_meal(id INTEGER PRIMARY KEY AUTOINCREMENT, resetDate VARCHAR(255), followMeal0 INT(10) NOT NULL default 0, unfollowMeal0 INT(10) NOT NULL default 0, followMeal1 INT(10) NOT NULL default 0, unfollowMeal1 INT(10) NOT NULL default 0,followMeal2 INT(10) NOT NULL default 0, unfollowMeal2 INT(10) NOT NULL default 0, followMeal3 INT(10) NOT NULL default 0, unfollowMeal3 INT(10) NOT NULL default 0, followMeal4 INT(10) NOT NULL default 0, unfollowMeal4 INT(10) NOT NULL default 0, followMeal5 INT(10) NOT NULL default 0, unfollowMeal5 INT(10) NOT NULL default 0, followMeal6 INT(10) NOT NULL default 0, unfollowMeal6 INT(10) NOT NULL default 0, followMeal7 INT(10) NOT NULL default 0, unfollowMeal7 INT(10) NOT NULL default 0)', []);
           }
         }
       );
