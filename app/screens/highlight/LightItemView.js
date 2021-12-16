@@ -19,18 +19,10 @@ const LightItemView = ({params, onClick, onLongPress}) => {
         <ImageBackground source={params.image} resizeMode="contain" style={viewStyle.imageStyle}>
           <View style={{flex: 1, flexDirection: 'column',}}>
             <View style={viewStyle.switchText}>
-              <Text
-                  allowFontScaling={false}
-                  numberOfLines={1}
-                  style={viewStyle.content_title}
-                >
+              <Text allowFontScaling={false} numberOfLines={1} style={viewStyle.content_title}>
                   {params.title}
               </Text>
-              <Text
-                  allowFontScaling={false}
-                  numberOfLines={1}
-                  style={viewStyle.subTitle}
-                >
+              <Text allowFontScaling={false} numberOfLines={1} style={viewStyle.subTitle}>
                   {params.subtitle}
               </Text>
               <Animatable.Text animation="rubberBand" iterationCount="infinite" duration={3000} style={viewStyle.textStyle}>{params && params.value}</Animatable.Text>

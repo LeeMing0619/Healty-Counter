@@ -246,20 +246,20 @@ const CalandarView = ({navigation}) => {
               {isShow && (
                 <View style={{width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 20,}}>
                 <View style={viewStyle.mealView}>
-                  <Text style={viewStyle.textView1}>Healthy: {totalfollow}</Text>
-                  <Text style={viewStyle.textView1}>OMG: {totalunfollow}</Text>
+                  <Text allowFontScaling={false} style={viewStyle.textView1}>Healthy: {totalfollow}</Text>
+                  <Text allowFontScaling={false} style={viewStyle.textView1}>OMG: {totalunfollow}</Text>
                 </View>
                 <View style={viewStyle.mealView}>
-                    <Text style={viewStyle.textView2}>ま: {totalf0}</Text>
-                    <Text style={viewStyle.textView2}>ご: {totalf1}</Text>
-                    <Text style={viewStyle.textView2}>わ: {totalf2}</Text>
-                    <Text style={viewStyle.textView2}>や: {totalf3}</Text>
-                    <Text style={viewStyle.textView2}>さ: {totalf4}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>ま: {totalf0}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>ご: {totalf1}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>わ: {totalf2}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>や: {totalf3}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>さ: {totalf4}</Text>
                 </View>
                 <View style={viewStyle.mealView}>
-                    <Text style={viewStyle.textView2}>し: {totalf5}</Text>
-                    <Text style={viewStyle.textView2}>い: {totalf6}</Text>
-                    <Text style={viewStyle.textView2}>こ: {totalf7}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>し: {totalf5}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>い: {totalf6}</Text>
+                    <Text allowFontScaling={false} style={viewStyle.textView2}>こ: {totalf7}</Text>
                 </View>
               </View>
               )}

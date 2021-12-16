@@ -5,7 +5,7 @@ import Setting_IMG_1 from '../assets/images/setting-1.png';
 
 export const LightList = [
   {
-    title: '豆、豆腐',
+    title: 'まめ',
     subtitle: '',
     index: 1,
     image: IMG_1,
@@ -26,35 +26,35 @@ export const LightList = [
     value: 0,
   },
   {
-    title: '野菜',
+    title: 'やさい',
     subtitle: '',
     index: 4,
     image: IMG_1,
     value: 0,
   },
   {
-    title: '魚',
-    subtitle: '',
+    title: 'さかな',
+    subtitle: '（魚・肉・卵）',
     index: 5,
     image: IMG_1,
     value: 0,
   },
   {
-    title: '椎茸',
+    title: 'しいたけ',
     subtitle: '(きのこ)',
     index: 6,
     image: IMG_1,
     value: 0,
   },
   {
-    title: 'こんにゃく',
+    title: 'いも',
     subtitle: '',
     index: 7,
     image: IMG_1,
     value: 0,
   },
   {
-    title: '穀物',
+    title: 'こくもつ',
     subtitle: '',
     index: 8,
     image: IMG_1,
