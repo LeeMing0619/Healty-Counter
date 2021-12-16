@@ -1,100 +1,97 @@
 /* eslint-disable prettier/prettier */
 import IMG_1 from '../assets/images/light-1.png';
-import IMG_2 from '../assets/images/light-2.png';
-import IMG_3 from '../assets/images/light-3.png';
-import IMG_4 from '../assets/images/light-4.png';
-import IMG_5 from '../assets/images/light-5.png';
-import IMG_6 from '../assets/images/light-6.png';
-import IMG_7 from '../assets/images/light-7.png';
-import IMG_8 from '../assets/images/light-8.png';
 
 import Setting_IMG_1 from '../assets/images/setting-1.png';
-import Setting_IMG_2 from '../assets/images/setting-2.png';
-import Setting_IMG_3 from '../assets/images/setting-3.png';
-import Setting_IMG_4 from '../assets/images/setting-4.png';
-import Setting_IMG_5 from '../assets/images/setting-5.png';
 
 export const LightList = [
   {
     title: '豆、豆腐',
+    subtitle: '',
     index: 1,
     image: IMG_1,
     value: 0,
   },
   {
-    title: 'ごま、ナッツ',
+    title: 'ごま',
+    subtitle: '',
     index: 2,
-    image: IMG_2,
+    image: IMG_1,
     value: 0,
   },
   {
-    title: 'わかめ(海藻)',
+    title: 'わかめ',
+    subtitle: '(海藻)',
     index: 3,
-    image: IMG_3,
+    image: IMG_1,
     value: 0,
   },
   {
     title: '野菜',
+    subtitle: '',
     index: 4,
-    image: IMG_4,
+    image: IMG_1,
     value: 0,
   },
   {
     title: '魚',
+    subtitle: '',
     index: 5,
-    image: IMG_5,
+    image: IMG_1,
     value: 0,
   },
   {
-    title: '椎茸(きのこ)',
+    title: '椎茸',
+    subtitle: '(きのこ)',
     index: 6,
-    image: IMG_6,
+    image: IMG_1,
     value: 0,
   },
   {
-    title: '芋、こんにゃく',
+    title: 'こんにゃく',
+    subtitle: '',
     index: 7,
-    image: IMG_7,
+    image: IMG_1,
     value: 0,
   },
   {
     title: '穀物',
+    subtitle: '',
     index: 8,
-    image: IMG_8,
+    image: IMG_1,
     value: 0,
   },
 ];
 
 export const SettingList = [
   {
-    title: 'START YOUR DAY RIGHT',
+    title: 'このアプリの使い方',
     option: false,
     image: Setting_IMG_1,
   },
   {
-    title: 'POWER VEGETABLES',
+    title: 'まごわやさしいカウンターについて',
     option: false,
-    image: Setting_IMG_2,
+    image: Setting_IMG_1,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: 'まごわやさしいカウンターを使う (有料)',
     option: false,
-    image: Setting_IMG_3,
+    image: Setting_IMG_1,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: 'ヘルプ・不具合報告',
     option: false,
-    image: Setting_IMG_4,
+    image: Setting_IMG_1,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: 'プライバシーポリシー',
     option: false,
-    image: Setting_IMG_5,
+    image: Setting_IMG_1,
   },
   {
-    title: 'STAY FIT, EAT HEALTHY',
+    title: '月間の合計数も上記に表示',
     option: true,
-    image: Setting_IMG_5,
+    image: Setting_IMG_1,
   },
 ];
 

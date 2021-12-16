@@ -62,18 +62,29 @@ const SettingListView = ({params, onClick}) => {
   <TouchableOpacity onPress={onClick}>
     <View style={viewStyle.containerView}>
       <ImageBackground source={params.image} style={viewStyle.imageStyle}>
-        {params.option && (
-          <View style={viewStyle.switch}>
-            <ToggleSwitch
-              isOn={onOff}
-              onColor="#6AB8F6"
-              offColor="#EEF1F2"
-              labelStyle={{ color: 'black', fontWeight: '300' }}
-              size="medium"
-              onToggle={isOn => { selectONOFF(isOn)}}
-            />
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <View style={viewStyle.switchText}>
+            <Text
+                allowFontScaling={false}
+                numberOfLines={1}
+                style={viewStyle.content_title}
+              >
+                {params.title}
+            </Text>
           </View>
-        )}
+          {params.option && (
+            <View style={viewStyle.switch}>
+              <ToggleSwitch
+                isOn={onOff}
+                onColor="#6AB8F6"
+                offColor="#EEF1F2"
+                labelStyle={{ color: 'black', fontWeight: '300' }}
+                size="medium"
+                onToggle={isOn => { selectONOFF(isOn)}}
+              />
+            </View>
+          )}
+        </View>
       </ImageBackground>
     </View>
   </TouchableOpacity>
@@ -91,6 +102,13 @@ const viewStyle = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'rgba(0,0,0,0.2)',
     flexDirection: 'column',
+  },
+  switchText: {
+    // position: 'absolute',
+    flex: 1,
+    alignItems:'flex-start',
+    justifyContent: 'center',
+    left: 18,
   },
   switch: {
     // position: 'absolute',
