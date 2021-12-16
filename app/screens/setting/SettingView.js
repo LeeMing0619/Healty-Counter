@@ -7,6 +7,22 @@ import BackgroundImage from '../../assets/images/bgThumb.png';
 import SettingListView from './SettingListView';
 
 const SettingView = ({navigation}) => {
+
+  const onPressLightItem = (index) => {
+    switch (index) {
+      case 0:
+        navigation.push('WebView1');
+        break;
+      case 1:
+        navigation.push('WebView2');
+        break;
+      case 3:
+        navigation.push('WebView3');
+        break;
+    }
+
+  };
+
   return (
     <SafeAreaView style={viewStyle.container}>
         <ImageBackground source={BackgroundImage} resizeMode="cover" style={viewStyle.containerView}>
@@ -16,7 +32,7 @@ const SettingView = ({navigation}) => {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item, index}) => {
                 return (
-                    <SettingListView params={item} />
+                    <SettingListView params={item} onClick={() => onPressLightItem(index)} />
                 );
                 }}
             />
@@ -37,10 +53,5 @@ const viewStyle = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-  },
-  textTitleStyle: {
-    height: Dimensions.get('window').height / 6,
-    width: Dimensions.get('window').width / 2,
-    resizeMode: 'center',
   },
 });

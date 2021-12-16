@@ -13,7 +13,7 @@ const CameraStack = () => {
         headerShown: false,
       }}>
       <CameraStack.Screen
-        name={Constant.THUMB}
+        name={Constant.CAMERA}
         component={CameraView}
       />
     </CameraStack.Navigator>

@@ -68,27 +68,32 @@ export const LightList = [
 export const SettingList = [
   {
     title: 'START YOUR DAY RIGHT',
-    subtitle: 'Breakfast',
+    option: false,
     image: Setting_IMG_1,
   },
   {
     title: 'POWER VEGETABLES',
-    subtitle: 'Vegetarian',
+    option: false,
     image: Setting_IMG_2,
   },
   {
     title: 'STAY FIT, EAT HEALTHY',
-    subtitle: 'Breakfast',
+    option: false,
     image: Setting_IMG_3,
   },
   {
     title: 'STAY FIT, EAT HEALTHY',
-    subtitle: 'Breakfast',
+    option: false,
     image: Setting_IMG_4,
   },
   {
     title: 'STAY FIT, EAT HEALTHY',
-    subtitle: 'Breakfast',
+    option: false,
+    image: Setting_IMG_5,
+  },
+  {
+    title: 'STAY FIT, EAT HEALTHY',
+    option: true,
     image: Setting_IMG_5,
   },
 ];

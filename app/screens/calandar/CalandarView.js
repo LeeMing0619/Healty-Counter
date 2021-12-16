@@ -12,6 +12,7 @@ import BackgroundImage from '../../assets/images/bgThumb.png';
 import { Calendar, CalendarList } from 'react-native-calendars';
 import { openDatabase } from 'react-native-sqlite-storage';
 import moment from 'moment';
+import { useFocusEffect } from '@react-navigation/native';
 
 var db = openDatabase({ name: 'HealthyCounter.db'});
 
@@ -32,22 +33,62 @@ const CalandarView = ({navigation}) => {
     const [f6, setF6] = useState(0);
     const [f7, setF7] = useState(0);
 
-    useEffect(() => {
-        getCurrentDate();
+    const [totalfollow, settotalFollow] = useState(0);
+    const [totalunfollow, settotalUnFollow] = useState(0);
+    const [totalf0, settotalF0] = useState(0);
+    const [totalf1, settotalF1] = useState(0);
+    const [totalf2, settotalF2] = useState(0);
+    const [totalf3, settotalF3] = useState(0);
+    const [totalf4, settotalF4] = useState(0);
+    const [totalf5, settotalF5] = useState(0);
+    const [totalf6, settotalF6] = useState(0);
+    const [totalf7, settotalF7] = useState(0);
+
+    const [isShow, setIsShow] = useState(false);
+
+    useFocusEffect(
+      React.useCallback(() => {
         db.transaction((tx) => {
           tx.executeSql(
-            'SELECT * FROM table_calandar',
+            'SELECT * FROM table_setting',
             [],
             (tx, results) => {
-                var temp = [];
-                for (let i = 0; i < results.rows.length; ++i)
-                    temp.push(results.rows.item(i).resetDate);
-
-                setMarkedDateList(temp);
+              if (results.rows.length === 0)
+                setIsShow(false);
+              else
+                setIsShow(results.rows.item(0).isOne === 1 ? true:false);
             }
           );
         });
-      }, [navigation]);
+      },[])
+    );
+    useEffect(() => {
+      getCurrentDate();
+      _initFunc();
+      db.transaction((tx) => {
+        tx.executeSql(
+          'SELECT * FROM table_calandar',
+          [],
+          (tx, results) => {
+            var temp = [];
+            for (let i = 0; i < results.rows.length; ++i)
+                temp.push(results.rows.item(i).resetDate);
+
+            setMarkedDateList(temp);
+          }
+        );
+        tx.executeSql(
+          'SELECT * FROM table_setting',
+          [],
+          (tx, results) => {
+            if (results.rows.length === 0)
+              setIsShow(false);
+            else
+              setIsShow(results.rows.item(0).isOne === 1 ? true:false);
+          }
+        );
+      });
+    }, [navigation]);
 
     const marked = {};
     marked[currentDate] =  {startingDay: true, endingDay: true, color: 'orange', textColor: 'white'};
@@ -57,13 +98,56 @@ const CalandarView = ({navigation}) => {
             marked[day] = {startingDay: true, endingDay: true, color: 'orange', textColor: 'white'};
         });
 
+    const _initFunc = () => {
+      db.transaction((tx) => {
+        tx.executeSql(
+          `SELECT sum(followCounter) as fc, sum(unFollowCounter) as ufc FROM table_calandar WHERE resetDate LIKE '` + getCurrentMonth() + `%'`,
+          [],
+          (tx, results) => {
+            if (results.rows.length === 0) {
+              settotalFollow(0);
+              settotalUnFollow(0);
+            } else {
+              if (results.rows.item(0).fc === null)
+                settotalFollow(0);
+              else
+                settotalFollow(results.rows.item(0).fc);
+              if (results.rows.item(0).ufc === null)
+                settotalUnFollow(0)
+              else settotalUnFollow(results.rows.item(0).ufc);
+            }
+            tx.executeSql(
+              `SELECT sum(followMeal0) as f0, sum(unfollowMeal0) as uf0, sum(followMeal1) as f1, sum(unfollowMeal1) as uf1,
+              sum(followMeal2) as f2, sum(unfollowMeal2) as uf2, sum(followMeal3) as f3, sum(unfollowMeal3) as uf3,
+              sum(followMeal4) as f4, sum(unfollowMeal4) as uf4, sum(followMeal5) as f5, sum(unfollowMeal5) as uf5,
+              sum(followMeal6) as f6, sum(unfollowMeal6) as uf6, sum(followMeal7) as f7, sum(unfollowMeal7) as uf7
+              FROM table_meal WHERE resetDate LIKE '` + getCurrentMonth() + `%'`,
+            [],
+            (tx, results) => {
+              if (results.rows.length > 0) {
+                settotalF0(results.rows.item(0).f0 - results.rows.item(0).uf0);
+                settotalF1(results.rows.item(0).f1 - results.rows.item(0).uf1);
+                settotalF2(results.rows.item(0).f2 - results.rows.item(0).uf2);
+                settotalF3(results.rows.item(0).f3 - results.rows.item(0).uf3);
+                settotalF4(results.rows.item(0).f4 - results.rows.item(0).uf4);
+                settotalF5(results.rows.item(0).f5 - results.rows.item(0).uf5);
+                settotalF6(results.rows.item(0).f6 - results.rows.item(0).uf6);
+                settotalF7(results.rows.item(0).f7 - results.rows.item(0).uf7);
+              }
+            }
+          );
+          }
+        );
+      });
+    };
+
     const _onPressDay = (day) => {
         let selectedDate = day.dateString;
         db.transaction((tx) => {
             tx.executeSql(
               'SELECT * FROM table_calandar WHERE resetDate=?',
               [selectedDate],
-              (tx, results) => { 
+              (tx, results) => {
                 if (results.rows.length > 0) {
                   setFollow(results.rows.item(0).followCounter);
                   setUnFollow(results.rows.item(0).unFollowCounter);
@@ -107,6 +191,11 @@ const CalandarView = ({navigation}) => {
     const getCurrentDate = () => {
         var date = moment().format("YYYY-MM-DD");
         setCurrentDate(date);
+    };
+
+    const getCurrentMonth = () => {
+      var date = moment().format("YYYY-MM");
+      return date;
     };
 
     return (
@@ -154,6 +243,26 @@ const CalandarView = ({navigation}) => {
                   markingType={'period'}
                   markedDates={marked}
               />
+              {isShow && (
+                <View style={{width: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 20,}}>
+                <View style={viewStyle.mealView}>
+                  <Text style={viewStyle.textView1}>Healthy: {totalfollow}</Text>
+                  <Text style={viewStyle.textView1}>OMG: {totalunfollow}</Text>
+                </View>
+                <View style={viewStyle.mealView}>
+                    <Text style={viewStyle.textView2}>ま: {totalf0}</Text>
+                    <Text style={viewStyle.textView2}>ご: {totalf1}</Text>
+                    <Text style={viewStyle.textView2}>わ: {totalf2}</Text>
+                    <Text style={viewStyle.textView2}>や: {totalf3}</Text>
+                    <Text style={viewStyle.textView2}>さ: {totalf4}</Text>
+                </View>
+                <View style={viewStyle.mealView}>
+                    <Text style={viewStyle.textView2}>し: {totalf5}</Text>
+                    <Text style={viewStyle.textView2}>い: {totalf6}</Text>
+                    <Text style={viewStyle.textView2}>こ: {totalf7}</Text>
+                </View>
+              </View>
+              )}
           </ImageBackground>
           <ModalView show={show} date={tapDate} follow={follow} unfollow={unfollow} f0={f0} f1={f1} f2={f2} f3={f3} f4={f4} f5={f5} f6={f6} f7={f7}
               onRequestClose={()=>{
@@ -171,7 +280,7 @@ export default CalandarView;
 const viewStyle = StyleSheet.create({
   containerView: {
     flex: 1,
-    justifyContent: 'center',
+    //justifyContent: 'center',
   },
   headerView: {
     flexDirection: 'column',
@@ -199,15 +308,19 @@ const viewStyle = StyleSheet.create({
     width: Dimensions.get('window').width / 2 - 30,
     resizeMode: 'contain',
   },
-  textTitleStyle: {
-    fontSize: 26,
-    color: 'rgba(0,0,0,0.7)',
-    marginBottom: 20,
+  mealView: {
+    width: Dimensions.get('window').width - 80,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    // marginRight: 10,
   },
-  textTitleStyle1: {
-    fontSize: 42,
-    color: 'rgba(0,0,0,0.7)',
-    marginLeft: -15,
-    marginBottom: 40,
+  textView1: {
+    fontSize: 16,
+    color: 'white',
+  },
+  textView2: {
+    fontSize: 16,
+    marginRight: 10,
+    color: 'white',
   },
 });

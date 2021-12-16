@@ -13,7 +13,7 @@ const CalandarStack = () => {
         headerShown: false,
       }}>
       <CalandarStack.Screen
-        name={Constant.THUMB}
+        name={Constant.CALANDAR}
         component={CalandarView}
       />
     </CalandarStack.Navigator>
