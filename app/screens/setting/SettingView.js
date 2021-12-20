@@ -1,12 +1,44 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import { Dimensions, Image, ImageBackground, StyleSheet, FlatList} from 'react-native';
+import React, { useEffect } from 'react';
+import { Platform, Image, ImageBackground, StyleSheet, FlatList} from 'react-native';
 import { Helper } from '../../styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BackgroundImage from '../../assets/images/bgThumb.png';
 import SettingListView from './SettingListView';
+import * as RNIap from 'react-native-iap';
+
+
 
 const SettingView = ({navigation}) => {
+
+  const itemSkus = Platform.select({
+    ios: [
+      'android.test.purchase',
+     ],
+     android: [
+      'android.test.purchased',
+     ],
+  });
+  
+  useEffect(() => {
+    RNIap.initConnection();
+    RNIap.getAvailablePurchases()
+    RNIap.getProducts(itemSkus).then((products) => {
+    //handle success of fetch product list
+    }).catch((error) => {
+      console.log(error.message);
+    });
+  },[itemSkus]);
+
+  const buyExample = () => {
+    RNIap.requestPurchase('android.test.purchased', false).then(purchase => {
+      this.setState({count: this.state.count + 1});
+      RNIap.consumePurchase(purchase.purchaseToken);
+      console.log(purchase);
+    }).catch((error) => {
+      console.log("Catch: " + error.message);
+    });
+  };
 
   const onPressLightItem = (index) => {
     switch (index) {
@@ -16,8 +48,14 @@ const SettingView = ({navigation}) => {
       case 1:
         navigation.push('WebView2');
         break;
+      case 2:
+        buyExample();
+        break;
       case 3:
         navigation.push('WebView3');
+        break;
+      case 4:
+        navigation.push('WebView4');
         break;
     }
 

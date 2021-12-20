@@ -271,11 +271,13 @@ const viewStyle = StyleSheet.create({
     resizeMode: 'contain',
   },
   textTitleStyle: {
+    fontFamily: 'Roboto',
     fontSize: 26,
     color: 'rgba(0,0,0,0.7)',
     marginBottom: 20,
   },
   textTitleStyle1: {
+    fontFamily: 'Roboto',
     fontSize: 42,
     color: 'rgba(0,0,0,0.7)',
     marginLeft: -15,

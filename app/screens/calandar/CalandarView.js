@@ -230,7 +230,7 @@ const CalandarView = ({navigation}) => {
                       textDayHeaderFontWeight: '300',
                       textDayFontSize: 16,
                       textMonthFontSize: 20,
-                      textDayHeaderFontSize: 16,
+                      textDayHeaderFontSize: 15,
                       'stylesheet.calendar.header': {
                           dayTextAtIndex0: {
                           color: 'red',
@@ -315,10 +315,12 @@ const viewStyle = StyleSheet.create({
     // marginRight: 10,
   },
   textView1: {
+    fontFamily: 'Roboto',
     fontSize: 16,
     color: 'white',
   },
   textView2: {
+    fontFamily: 'Roboto',
     fontSize: 16,
     marginRight: 10,
     color: 'white',

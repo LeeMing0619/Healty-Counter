@@ -197,6 +197,7 @@ const viewStyle = StyleSheet.create({
     width: '100%',
   },
   textTitleStyle: {
+    fontFamily: 'Roboto',
     height: Dimensions.get('window').height / 6,
     width: Dimensions.get('window').width / 2,
     resizeMode: 'center',
@@ -209,6 +210,7 @@ const viewStyle = StyleSheet.create({
     alignItems: 'center',
   },
   textStyle: {
+    fontFamily: 'Roboto',
     fontSize: 22,
     letterSpacing: -0.24,
     fontWeight: 'normal',

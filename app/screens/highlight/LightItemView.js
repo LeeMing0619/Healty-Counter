@@ -64,9 +64,11 @@ const viewStyle = StyleSheet.create({
     justifyContent: 'center',
   },
   content_title: {
+    fontFamily: 'Roboto',
     fontSize: 12,
   },
   subTitle: {
+    fontFamily: 'Roboto',
     fontSize: 10,
   },
 });
