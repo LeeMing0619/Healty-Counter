@@ -19,7 +19,7 @@ const SettingView = ({navigation}) => {
       'android.test.purchased',
      ],
   });
-  
+
   useEffect(() => {
     RNIap.initConnection();
     RNIap.getAvailablePurchases()
@@ -58,7 +58,6 @@ const SettingView = ({navigation}) => {
         navigation.push('WebView4');
         break;
     }
-
   };
 
   return (
